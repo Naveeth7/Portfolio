@@ -17,6 +17,7 @@ type Profile struct {
 	GitHub     string       `json:"github"`
 	LinkedIn   string       `json:"linkedin"`
 	Skills     []SkillGroup `json:"skills"`
+	Education  []Education  `json:"education"`
 	Experience []Experience `json:"experience"`
 }
 
@@ -25,7 +26,13 @@ type SkillGroup struct {
 	Tools []string `json:"tools"`
 }
 
+type Education struct {
+	Degree      string `json:"degree"`
+	Institution string `json:"institution"`
+}
+
 type Experience struct {
+	Period      string `json:"period"`
 	Company     string `json:"company"`
 	Role        string `json:"role"`
 	Description string `json:"description"`
@@ -34,10 +41,15 @@ type Experience struct {
 type Project struct {
 	Title       string   `json:"title"`
 	Category    string   `json:"category"`
-	Status      string   `json:"status,omitempty"`
 	Description string   `json:"description"`
+	Metrics     []Metric  `json:"metrics"`
+	Details     []string `json:"details"`
 	Tools       []string `json:"tools"`
-	URL         string   `json:"url,omitempty"`
+}
+
+type Metric struct {
+	Value string `json:"value"`
+	Label string `json:"label"`
 }
 
 type App struct {

@@ -24,7 +24,7 @@ func main() {
 		Height:           850,
 		MinWidth:         360,
 		MinHeight:        520,
-		BackgroundColour: options.NewRGB(17, 24, 25),
+		BackgroundColour: options.NewRGB(16, 18, 27),
 		AssetServer:      &assetserver.Options{Assets: assets},
 		Bind:             []interface{}{app},
 	})

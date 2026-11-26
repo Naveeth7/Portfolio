@@ -1,25 +1,134 @@
 {
   "name": "Naveeth Poojari",
-  "headline": "Backend & platform engineer",
-  "location": "Coventry, UK",
-  "intro": "I build Go services and the platforms that run them. My work spans Kubernetes orchestration, distributed APIs and digital services for local government.",
+  "headline": "Software Engineer",
+  "location": "United Kingdom",
+  "intro": "I build backend services in Go, web applications in TypeScript, and machine learning systems with a focus on evaluation, fairness and explainability.",
   "github": "https://github.com/Naveeth7",
   "linkedin": "https://www.linkedin.com/in/naveeth-poojari-010574163/",
   "skills": [
-    {"area":"Backend", "tools":["Go","gRPC","REST APIs","Kafka","PostgreSQL"]},
-    {"area":"Platform", "tools":["Kubernetes","Docker","Terraform","Consul","Azure DevOps"]},
-    {"area":"Reliability", "tools":["OpenTelemetry","Prometheus","Grafana","Application Insights"]}
+    {
+      "area": "Go",
+      "tools": [
+        "Distributed systems",
+        "gRPC",
+        "REST APIs",
+        "Kafka",
+        "PostgreSQL",
+        "Kubernetes"
+      ]
+    },
+    {
+      "area": "TypeScript",
+      "tools": [
+        "React",
+        "Web applications",
+        "API integration"
+      ]
+    },
+    {
+      "area": "AI Engineering",
+      "tools": [
+        "Python",
+        "ML pipelines",
+        "Model evaluation",
+        "Fairness",
+        "Explainability"
+      ]
+    }
   ],
   "experience": [
-    {"company":"Coventry City Council", "role":"Web Development Officer", "description":"Build and support digital services, including Building Control forms, waste service compliance workflows and a .NET application."},
-    {"company":"University of Staffordshire", "role":"Research Assistant / App Developer", "description":"Built a Flutter research app with a Go API, Azure PostgreSQL and Application Insights."},
-    {"company":"F5 Networks", "role":"Software Engineer", "description":"Worked on Kubernetes controllers for DDoS mitigation orchestration and Consul-based service discovery for VM workloads."},
-    {"company":"ZopSmart", "role":"Software Engineer", "description":"Built Go microservices and worked on concurrent caching, event-driven integrations and load testing."}
+    {
+      "company": "Coventry City Council",
+      "role": "Web Development Officer (Lead)",
+      "description": "Build and support digital services, including Building Control forms, waste service compliance workflows and a .NET application.",
+      "period": "Apr 2026 – Present"
+    },
+    {
+      "company": "University of Staffordshire",
+      "role": "Research Assistant / Application Developer",
+      "description": "Built a Flutter research app with a Go API, Azure PostgreSQL and Application Insights.",
+      "period": "May – Aug 2025"
+    },
+    {
+      "company": "F5 Networks",
+      "role": "Software Engineer",
+      "description": "Worked on Kubernetes controllers for DDoS mitigation orchestration and Consul-based service discovery for VM workloads.",
+      "period": "May – Nov 2024"
+    },
+    {
+      "company": "ZopSmart",
+      "role": "Software Engineer",
+      "description": "Built Go microservices and worked on concurrent caching, event-driven integrations and load testing.",
+      "period": "Jan 2022 – May 2024"
+    }
   ],
   "projects": [
-    {"title":"InvariantLab", "category":"API tooling", "status":"Prototype", "description":"Imports an OpenAPI specification and builds a graph that links APIs to their operations and records the evidence behind each relationship.", "tools":["OpenAPI","Service graphs"]},
-    {"title":"Virtual workload orchestration", "category":"Platform engineering", "description":"Worked on service discovery and mutual TLS for VM workloads using Consul. Added observability with OpenTelemetry and Prometheus.", "tools":["Go","Consul","OpenTelemetry"]},
-    {"title":"Crew compliance workflow", "category":"Digital services", "description":"Built a mobile-friendly workflow for waste service team leaders, with section validation, a printable PDF and SQL Server reporting data.", "tools":["Granicus","SQL Server","ODBC"]},
-    {"title":"Perinatal mental health ML", "category":"Applied machine learning", "description":"A machine learning project exploring perinatal mental health. The source and project materials are available on GitHub.", "tools":["Machine learning"], "url":"https://github.com/Naveeth7/perinatal-mental-health-ml"}
+    {
+      "title": "Fairness-Aware Machine Learning for Predicting Perinatal Health Outcomes",
+      "category": "Applied machine learning",
+      "description": "Predictive modelling with an emphasis on fairness and explainability in perinatal health data.",
+      "metrics": [
+        {
+          "value": "5.1M+",
+          "label": "Records processed"
+        },
+        {
+          "value": "0.80",
+          "label": "XGBoost R²"
+        },
+        {
+          "value": "~82%",
+          "label": "Classification accuracy"
+        }
+      ],
+      "details": [
+        "Built a Python pipeline integrating 72 NHS Maternity Services Data Set (MSDS) datasets with multi-year ONS data. The pipeline harmonised inconsistent schemas and processed over 5.1 million records.",
+        "Compared XGBoost, Random Forest and Linear Regression, with automated hyperparameter optimisation across 80 configurations. XGBoost achieved an R² of 0.80.",
+        "Applied threshold optimisation and reweighing to reduce demographic disparity, and used SHAP and LIME to explain predictions. The classification analysis achieved approximately 82% accuracy."
+      ],
+      "tools": [
+        "Python",
+        "XGBoost",
+        "Fairness-aware ML",
+        "SHAP",
+        "LIME"
+      ]
+    },
+    {
+      "title": "Speech Emotion Recognition using Linguistic and Acoustic Features",
+      "category": "Audio machine learning",
+      "description": "A Python pipeline that classifies emotion in speech using acoustic features and rate of speech.",
+      "metrics": [
+        {
+          "value": "79.4%",
+          "label": "Classification accuracy"
+        },
+        {
+          "value": "Up to 8%",
+          "label": "CNN accuracy improvement"
+        }
+      ],
+      "details": [
+        "Built a pipeline using RAVDESS and CREMA-D that covers preprocessing, feature engineering, augmentation, training and evaluation.",
+        "Extracted MFCCs, zero-crossing rate, chroma, energy, statistical features and rate of speech. Augmented audio with noise injection, time shifting, time stretching and pitch changes.",
+        "Trained and evaluated CNN and MLP models. Adding the rate-of-speech feature improved CNN accuracy by up to 8%, reaching 79.4% classification accuracy."
+      ],
+      "tools": [
+        "Python",
+        "Audio feature engineering",
+        "CNN",
+        "MLP"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master’s degree in Data Science and AI",
+      "institution": "Coventry University"
+    },
+    {
+      "degree": "Bachelor’s degree in Electronics and Communication Engineering",
+      "institution": "PES University"
+    }
   ]
 }

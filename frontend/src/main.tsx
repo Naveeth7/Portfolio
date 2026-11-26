@@ -4,14 +4,7 @@ import { createRoot } from 'react-dom/client'
 import portfolio from './portfolio.json'
 import './style.css'
 
-type Project = {
-  title: string
-  category: string
-  status?: string
-  description: string
-  tools: string[]
-  url?: string
-}
+type Project = typeof portfolio.projects[number]
 type Profile = Omit<typeof portfolio, 'projects'>
 
 declare global {
@@ -24,9 +17,16 @@ declare global {
   }
 }
 
-const sections = ['About', 'Projects', 'Experience', 'Skills', 'Contact']
+const navigation = [
+  ['Projects', 'projects'], ['Experience', 'experience'],
+  ['Skills', 'skills'], ['Education', 'education'], ['Contact', 'contact'],
+]
 
-function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
+function ExternalLink({ href, children, className }: {
+  href: string
+  children: ReactNode
+  className?: string
+}) {
   function openInBrowser(event: MouseEvent<HTMLAnchorElement>) {
     if (window.runtime?.BrowserOpenURL) {
       event.preventDefault()
@@ -35,7 +35,7 @@ function ExternalLink({ href, children }: { href: string; children: ReactNode })
   }
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" onClick={openInBrowser}>
+    <a className={className} href={href} target="_blank" rel="noopener noreferrer" onClick={openInBrowser}>
       {children} <span aria-hidden="true">↗</span>
     </a>
   )
@@ -62,56 +62,72 @@ function App() {
   }, [])
 
   return (
-    <div className="layout">
+    <>
       <a className="skip" href="#about">Skip to content</a>
-      <aside className="sidebar">
-        <a className="identity" href="#about">
-          <span className="monogram" aria-hidden="true">NP</span>
-          <span>{profile.name}</span>
-        </a>
-        <nav aria-label="Portfolio sections">
-          {sections.map(section => (
-            <a key={section} href={'#' + section.toLowerCase()}>{section}</a>
-          ))}
-        </nav>
-        <div className="sidebar-links">
-          <ExternalLink href={profile.github}>GitHub</ExternalLink>
-          <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
+      <header className="site-header">
+        <div className="shell header-inner">
+          <a className="identity" href="#about">
+            <span className="monogram" aria-hidden="true">NP</span>{profile.name}
+          </a>
+          <nav aria-label="Portfolio sections">
+            {navigation.map(([label, id]) => <a key={id} href={'#' + id}>{label}</a>)}
+          </nav>
         </div>
-      </aside>
+      </header>
 
-      <main>
-        <section className="hero" id="about" aria-labelledby="intro-title">
-          <p className="location">{profile.location}</p>
-          <h1 id="intro-title">{profile.headline}</h1>
-          <p className="intro">{profile.intro}</p>
-          <div className="actions">
-            <a className="primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
-            <a href="#contact">Get in touch</a>
+      <main className="shell">
+        <section className="hero" id="about" aria-labelledby="intro-title" tabIndex={-1}>
+          <div className="hero-copy">
+            <p className="eyebrow"><span className="dot" />{profile.location}</p>
+            <h1 id="intro-title">{profile.headline}</h1>
+            <p className="intro">{profile.intro}</p>
+            <div className="actions">
+              <a className="button primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+              <ExternalLink className="button secondary" href={profile.linkedin}>LinkedIn</ExternalLink>
+            </div>
+          </div>
+          <div className="hero-art" aria-hidden="true">
+            <div className="orbit orbit-outer" />
+            <div className="orbit orbit-inner" />
+            <span className="art-monogram">NP</span>
           </div>
         </section>
 
-        <section id="projects" aria-labelledby="projects-title">
-          <h2 id="projects-title">Selected projects</h2>
+        <section className="section" id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">Featured projects</h2>
           <div className="project-grid">
             {projects.map(project => (
               <article className="project" key={project.title}>
-                <p className="category">{project.category}{project.status && ' · ' + project.status}</p>
+                <p className="eyebrow">{project.category}</p>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
+                <dl className="metrics">
+                  {project.metrics.map(metric => (
+                    <div key={metric.label}>
+                      <dt>{metric.label}</dt>
+                      <dd>{metric.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <details>
+                  <summary>Methods and results</summary>
+                  <ul className="project-details">{project.details.map(detail => <li key={detail}>{detail}</li>)}</ul>
+                </details>
                 <Tags items={project.tools} />
-                {project.url && <ExternalLink href={project.url}>View source</ExternalLink>}
               </article>
             ))}
           </div>
         </section>
 
-        <section id="experience" aria-labelledby="experience-title">
+        <section className="section" id="experience" aria-labelledby="experience-title">
           <h2 id="experience-title">Experience</h2>
           <div className="experience">
             {profile.experience.map(job => (
               <article key={job.company}>
-                <h3>{job.company}</h3>
+                <div>
+                  <h3>{job.company}</h3>
+                  <p className="period">{job.period}</p>
+                </div>
                 <div>
                   <p className="role">{job.role}</p>
                   <p>{job.description}</p>
@@ -121,7 +137,7 @@ function App() {
           </div>
         </section>
 
-        <section id="skills" aria-labelledby="skills-title">
+        <section className="section" id="skills" aria-labelledby="skills-title">
           <h2 id="skills-title">Technical skills</h2>
           <div className="skill-grid">
             {profile.skills.map(group => (
@@ -133,15 +149,27 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" aria-labelledby="contact-title">
+        <section className="section" id="education" aria-labelledby="education-title">
+          <h2 id="education-title">Education</h2>
+          <div className="education-grid">
+            {profile.education.map(entry => (
+              <article key={entry.degree}>
+                <h3>{entry.degree}</h3>
+                <p>{entry.institution}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section contact" id="contact" aria-labelledby="contact-title">
           <h2 id="contact-title">Get in touch</h2>
           <div className="actions">
-            <ExternalLink href={profile.linkedin}>Message me on LinkedIn</ExternalLink>
-            <ExternalLink href={profile.github}>Follow my work on GitHub</ExternalLink>
+            <ExternalLink className="button primary" href={profile.linkedin}>Message me on LinkedIn</ExternalLink>
+            <ExternalLink className="button secondary" href={profile.github}>GitHub profile</ExternalLink>
           </div>
         </section>
       </main>
-    </div>
+    </>
   )
 }
 
