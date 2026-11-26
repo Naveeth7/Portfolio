@@ -1,0 +1,25 @@
+{
+  "name": "Naveeth Poojari",
+  "headline": "Backend & platform engineer",
+  "location": "Coventry, UK",
+  "intro": "I build Go services and the platforms that run them. My work spans Kubernetes orchestration, distributed APIs and digital services for local government.",
+  "github": "https://github.com/Naveeth7",
+  "linkedin": "https://www.linkedin.com/in/naveeth-poojari-010574163/",
+  "skills": [
+    {"area":"Backend", "tools":["Go","gRPC","REST APIs","Kafka","PostgreSQL"]},
+    {"area":"Platform", "tools":["Kubernetes","Docker","Terraform","Consul","Azure DevOps"]},
+    {"area":"Reliability", "tools":["OpenTelemetry","Prometheus","Grafana","Application Insights"]}
+  ],
+  "experience": [
+    {"company":"Coventry City Council", "role":"Web Development Officer", "description":"Build and support digital services, including Building Control forms, waste service compliance workflows and a .NET application."},
+    {"company":"University of Staffordshire", "role":"Research Assistant / App Developer", "description":"Built a Flutter research app with a Go API, Azure PostgreSQL and Application Insights."},
+    {"company":"F5 Networks", "role":"Software Engineer", "description":"Worked on Kubernetes controllers for DDoS mitigation orchestration and Consul-based service discovery for VM workloads."},
+    {"company":"ZopSmart", "role":"Software Engineer", "description":"Built Go microservices and worked on concurrent caching, event-driven integrations and load testing."}
+  ],
+  "projects": [
+    {"title":"InvariantLab", "category":"API tooling", "status":"Prototype", "description":"Imports an OpenAPI specification and builds a graph that links APIs to their operations and records the evidence behind each relationship.", "tools":["OpenAPI","Service graphs"]},
+    {"title":"Virtual workload orchestration", "category":"Platform engineering", "description":"Worked on service discovery and mutual TLS for VM workloads using Consul. Added observability with OpenTelemetry and Prometheus.", "tools":["Go","Consul","OpenTelemetry"]},
+    {"title":"Crew compliance workflow", "category":"Digital services", "description":"Built a mobile-friendly workflow for waste service team leaders, with section validation, a printable PDF and SQL Server reporting data.", "tools":["Granicus","SQL Server","ODBC"]},
+    {"title":"Perinatal mental health ML", "category":"Applied machine learning", "description":"A machine learning project exploring perinatal mental health. The source and project materials are available on GitHub.", "tools":["Machine learning"], "url":"https://github.com/Naveeth7/perinatal-mental-health-ml"}
+  ]
+}

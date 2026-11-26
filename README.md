@@ -23,6 +23,6 @@ npm ci
 npm run dev
 ```
 
-Run `npm run build` to type-check and create a static build in `frontend/dist` from the repository root. Use `npm run preview` from the `frontend` directory to serve that build locally.
+From the `frontend` directory, run `npm run build` to type-check and generate the static files in `dist`. Run `npm run preview` to serve that build locally.
 
 Edit `frontend/src/portfolio.json` to update the content. The desktop loads the same data through the Go bindings and opens external links in the system browser.
